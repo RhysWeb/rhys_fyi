@@ -1,6 +1,7 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
 import { trpc } from '../utils/trpc';
+import styles from '../styles/Home.module.css';
 
 const Home: NextPage = () => {
 	// const { data, isLoading } = trpc.useQuery([
@@ -17,36 +18,23 @@ const Home: NextPage = () => {
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 			<div>
-				<h1>
-					Create <span>T3</span> App
-				</h1>
-
-				<div>
-					<h3>This Stack uses:-</h3>
-					<ul>
-						<li>
-							<a href="https://nextjs.org" target="_blank" rel="noreferrer">
-								Next.js
-							</a>
-						</li>
-						<li>
-							<a href="https://trpc.io" target="_blank" rel="noreferrer">
-								tRPC
-							</a>
-						</li>
-						<li>
+				<main className={styles.main}>
+					<h1 className={styles.title}>Hello</h1>
+					<div>
+						{data ? (
 							<a
-								href="https://typescriptlang.org"
+								href="/GasConvert"
 								target="_blank"
 								rel="noreferrer"
-							>
-								TypeScript
-							</a>
-						</li>
-					</ul>
-
-					<div>{data ? <p>{JSON.stringify(data)}</p> : <p>Loading..</p>}</div>
-				</div>
+							>{`${data[0]?.name} ${data[0]?.constellation}`}</a>
+						) : (
+							<p>Loading..</p>
+						)}
+					</div>
+					{/* <a href="/GasConvert" target="_blank" rel="noreferrer">
+						TypeScript
+					</a> */}
+				</main>
 			</div>
 		</>
 	);
