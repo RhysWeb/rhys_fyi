@@ -2,6 +2,7 @@ import type { NextPage } from 'next';
 import Head from 'next/head';
 import { trpc } from '../utils/trpc';
 import styles from '../styles/Home.module.css';
+import Link from 'next/link';
 
 const Home: NextPage = () => {
 	// const { data, isLoading } = trpc.useQuery([
@@ -20,17 +21,24 @@ const Home: NextPage = () => {
 			<div>
 				<main className={styles.main}>
 					<h1 className={styles.title}>Hello</h1>
-					<div>
-						{data ? (
-							<a
-								href="/GasConvert"
-								target="_blank"
-								rel="noreferrer"
-							>{`${data[0]?.name} ${data[0]?.constellation}`}</a>
-						) : (
-							<p>Loading..</p>
-						)}
+
+					<div className={styles.linksContainer}>
+						<h2>Links</h2>
+						<Link href="/GasConvert">
+							<a className={styles.link}>Gas conversion</a>
+						</Link>
+						<Link href="/GasConvert">
+							<a className={styles.link}>Other information</a>
+						</Link>
+						<Link href="/GasConvert">
+							<a className={styles.link}>Something else</a>
+						</Link>
 					</div>
+					{data ? (
+						<p>{`Database Test: ${data[0]?.name} ${data[0]?.constellation}`}</p>
+					) : (
+						<p>Database Test: Loading..</p>
+					)}
 					{/* <a href="/GasConvert" target="_blank" rel="noreferrer">
 						TypeScript
 					</a> */}

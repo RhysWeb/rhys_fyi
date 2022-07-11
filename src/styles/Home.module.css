@@ -15,6 +15,20 @@
 .title {
 	margin: 0;
 	line-height: 1.15;
-	font-size: 4rem;
+	font-size: 5rem;
 	text-align: center;
+}
+
+.linksContainer {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	/* border: red solid 1px; */
+	margin-block: 1.5rem;
+}
+
+.link {
+	font-size: 1.5rem;
+	margin-block: 0.5rem;
 }
