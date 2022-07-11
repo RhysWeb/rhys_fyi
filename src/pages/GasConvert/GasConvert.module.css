@@ -19,16 +19,27 @@
 	text-align: center;
 }
 
-.linksContainer {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
+.cellsGridContainer {
+	display: inline-grid;
+	grid-template-columns: auto auto auto;
 	/* border: red solid 1px; */
 	margin-block: 1.5rem;
+	gap: 5px;
+}
+
+.gridHeader {
+	grid-column-start: 1;
+	grid-column-end: 4;
+	text-align: center;
 }
 
 .link {
 	font-size: 1.5rem;
 	margin-block: 0.5rem;
+}
+
+.gridItem {
+	background: pink;
+	height: 30px;
+	width: 100px;
 }
