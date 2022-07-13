@@ -37,10 +37,10 @@ function convertPressureToPaAbs(pressure: number, unit: string): number {
 		case 'psiG':
 			PaAbs = pressureNum * 6894.76 + 101325;
 			break;
-		case 'mmH20A':
+		case 'mmH2OA':
 			PaAbs = pressureNum * 133.322;
 			break;
-		case 'mmH20G':
+		case 'mmH2OG':
 			PaAbs = pressureNum * 133.322 + 101325;
 			break;
 		case 'atmA':
@@ -49,10 +49,10 @@ function convertPressureToPaAbs(pressure: number, unit: string): number {
 		case 'atmG':
 			PaAbs = pressureNum * 101325 + 101325;
 			break;
-		case 'KPaA':
+		case 'kPaA':
 			PaAbs = pressureNum * 1000;
 			break;
-		case 'KPaG':
+		case 'kPaG':
 			PaAbs = pressureNum * 1000 + 101325;
 			break;
 	}
@@ -150,13 +150,27 @@ function Output({ control }: { control: Control<FormValues> }) {
 	let Q2 = convertFlowFromLitersPerMinTo(Q2inLitresPerMin, outFlowUnit).toFixed(
 		2
 	);
-
+	console.log(P1);
 	return <input value={Q2} type="text" className={styles.output} />;
 	// return <div style={{ color: 'blue' }}>{result}</div>;
 }
 
 export default function GasConvert() {
-	const { register, control } = useForm<FormValues>();
+	const { register, control } = useForm<FormValues>({
+		defaultValues: {
+			inTemp: 0,
+			inPres: 2,
+			inFlow: 100,
+			outTemp: 15,
+			outPres: 0,
+			outFlowUnit: 'L/min',
+			outPresUnit: 'barG',
+			inTempUnit: 'C',
+			inPresUnit: 'barG',
+			inFlowUnit: 'L/min',
+			outTempUnit: 'C',
+		},
+	});
 
 	return (
 		<div className={styles.container}>
@@ -186,8 +200,8 @@ export default function GasConvert() {
 							className={styles.gridItem}
 							id="temperatureUnit"
 						>
-							<option value="K">K</option>
 							<option value="C">℃</option>
+							<option value="K">K</option>
 							<option value="F">F</option>
 						</select>
 
@@ -231,8 +245,8 @@ export default function GasConvert() {
 							{...register('inFlowUnit')}
 							id="inFlowUnit"
 						>
-							<option value="L/s">litres/sec</option>
 							<option value="L/min">litres/min</option>
+							<option value="L/s">litres/sec</option>
 							<option value="L/h">litres/hour</option>
 							<option value="m3/s">m3/sec</option>
 							<option value="m3/min">m3/min</option>
@@ -255,8 +269,8 @@ export default function GasConvert() {
 							{...register('outTempUnit')}
 							id="outTempUnit"
 						>
-							<option value="K">K</option>
 							<option value="C">℃</option>
+							<option value="K">K</option>
 							<option value="F">F</option>
 						</select>
 						<label className={styles.label} htmlFor="outPres">
@@ -291,8 +305,8 @@ export default function GasConvert() {
 							{...register('outFlowUnit')}
 							id="outFlowUnit"
 						>
-							<option value="L/s">litres/sec</option>
 							<option value="L/min">litres/min</option>
+							<option value="L/s">litres/sec</option>
 							<option value="L/h">litres/hour</option>
 							<option value="m3/s">m3/sec</option>
 							<option value="m3/min">m3/min</option>
