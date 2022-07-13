@@ -4,106 +4,110 @@ import styles from './GasConvert.module.css';
 import { useForm, useWatch, Control } from 'react-hook-form';
 
 function convertTempToKelvin(temp: number, unit: string): number {
+	let tempNum = Number(temp);
 	if (unit === 'C') {
-		return temp + 273.15;
+		return tempNum + 273.15;
 	} else if (unit === 'F') {
-		return ((temp + 459.67) * 5) / 9;
+		return ((tempNum + 459.67) * 5) / 9;
 	} else {
-		return temp;
+		return tempNum;
 	}
 }
 
 function convertPressureToPaAbs(pressure: number, unit: string): number {
+	let pressureNum = Number(pressure);
 	//convert pressure to Pa absolute
-	let PaAbs: number = 1;
+	if (unit === 'PaA') {
+		return pressureNum;
+	}
+	let PaAbs = pressureNum;
 	switch (unit) {
 		case 'barG':
-			PaAbs = pressure * 100000 + 101325;
+			PaAbs = pressureNum * 100000 + 101325;
 			break;
 		case 'barA':
-			PaAbs = pressure * 100000;
+			PaAbs = pressureNum * 100000;
 			break;
 		case 'PaG':
-			PaAbs = pressure + 101325;
-			break;
-		case 'PaA':
-			PaAbs = pressure;
+			PaAbs = pressureNum + 101325;
 			break;
 		case 'psiA':
-			PaAbs = pressure * 6894.76;
+			PaAbs = pressureNum * 6894.76;
 			break;
 		case 'psiG':
-			PaAbs = pressure * 6894.76 + 101325;
+			PaAbs = pressureNum * 6894.76 + 101325;
 			break;
 		case 'mmH20A':
-			PaAbs = pressure * 133.322;
+			PaAbs = pressureNum * 133.322;
 			break;
 		case 'mmH20G':
-			PaAbs = pressure * 133.322 + 101325;
+			PaAbs = pressureNum * 133.322 + 101325;
 			break;
 		case 'atmA':
-			PaAbs = pressure * 101325;
+			PaAbs = pressureNum * 101325;
 			break;
 		case 'atmG':
-			PaAbs = pressure * 101325 + 101325;
+			PaAbs = pressureNum * 101325 + 101325;
 			break;
 		case 'KPaA':
-			PaAbs = pressure * 1000;
+			PaAbs = pressureNum * 1000;
 			break;
 		case 'KPaG':
-			PaAbs = pressure * 1000 + 101325;
+			PaAbs = pressureNum * 1000 + 101325;
 			break;
 	}
 	return PaAbs;
 }
 
 function convertFlowToLitersPerMin(flow: number, unit: string): number {
+	let flowNum = Number(flow);
 	//convert flow to L/min
 	let Lpm: number = 1;
 	switch (unit) {
 		case 'L/min':
-			Lpm = flow;
+			Lpm = flowNum;
 			break;
 		case 'm3/min':
-			Lpm = flow * 1000;
+			Lpm = flowNum * 1000;
 			break;
 		case 'm3/s':
-			Lpm = flow * 1000 * 60;
+			Lpm = flowNum * 1000 * 60;
 			break;
 		case 'm3/h':
-			Lpm = flow * 1000 * 60 * 60;
+			Lpm = (flowNum * 1000) / 60;
 			break;
 		case 'L/h':
-			Lpm = flow / 60;
+			Lpm = flowNum / 60;
 			break;
 		case 'L/s':
-			Lpm = flow * 60;
+			Lpm = flowNum * 60;
 			break;
 	}
 	return Lpm;
 }
 
 function convertFlowFromLitersPerMinTo(flow: number, unit: string): number {
+	let flowNum = Number(flow);
 	//convert flow from L/min to specified unit
 	let outFlow: number = 1;
 	switch (unit) {
 		case 'L/min':
-			outFlow = flow;
+			outFlow = flowNum;
 			break;
 		case 'm3/min':
-			outFlow = flow / 1000;
+			outFlow = flowNum / 1000;
 			break;
 		case 'm3/s':
-			outFlow = flow / 1000 / 60;
+			outFlow = flowNum / 1000 / 60;
 			break;
 		case 'm3/h':
-			outFlow = (flow / 1000) * 60;
+			outFlow = (flowNum / 1000) * 60;
 			break;
 		case 'L/h':
-			outFlow = flow * 60;
+			outFlow = flowNum * 60;
 			break;
 		case 'L/s':
-			outFlow = flow / 60;
+			outFlow = flowNum / 60;
 			break;
 	}
 	return outFlow;
@@ -143,7 +147,10 @@ function Output({ control }: { control: Control<FormValues> }) {
 	let P2 = convertPressureToPaAbs(outPres, outPresUnit);
 	let Q1 = convertFlowToLitersPerMin(inFlow, inFlowUnit);
 	let Q2inLitresPerMin = (P1 * Q1 * T2) / (T1 * P2); //Q2 in L/min
-	let Q2 = convertFlowFromLitersPerMinTo(Q2inLitresPerMin, outFlowUnit);
+	let Q2 = convertFlowFromLitersPerMinTo(Q2inLitresPerMin, outFlowUnit).toFixed(
+		2
+	);
+
 	return <input value={Q2} type="text" className={styles.output} />;
 	// return <div style={{ color: 'blue' }}>{result}</div>;
 }
@@ -166,12 +173,12 @@ export default function GasConvert() {
 					<form className={styles.cellsGridContainer}>
 						<div className={styles.gridHeader}>Initial conditions</div>
 
-						<label className={styles.label} htmlFor="temperature">
+						<label className={styles.label} htmlFor="inTemp">
 							Temperature:{' '}
 						</label>
 						<input
 							{...register('inTemp')}
-							type="text"
+							type="number"
 							className={styles.input}
 						/>
 						<select
@@ -184,12 +191,12 @@ export default function GasConvert() {
 							<option value="F">F</option>
 						</select>
 
-						<label className={styles.label} htmlFor="pressure">
+						<label className={styles.label} htmlFor="inPres">
 							Pressure:{' '}
 						</label>
 						<input
 							{...register('inPres')}
-							type="text"
+							type="number"
 							className={styles.input}
 						/>
 						<select
@@ -211,12 +218,12 @@ export default function GasConvert() {
 							<option value="atmA">atm abs</option>
 						</select>
 
-						<label className={styles.label} htmlFor="flowrate">
+						<label className={styles.label} htmlFor="inFlow">
 							Flowrate:{' '}
 						</label>
 						<input
 							{...register('inFlow')}
-							type="text"
+							type="number"
 							className={styles.input}
 						/>
 						<select
@@ -235,12 +242,12 @@ export default function GasConvert() {
 							Final conditions
 						</div>
 
-						<label className={styles.label} htmlFor="temperature">
+						<label className={styles.label} htmlFor="outTemp">
 							Temperature:{' '}
 						</label>
 						<input
 							{...register('outTemp')}
-							type="text"
+							type="number"
 							className={styles.input}
 						/>
 						<select
@@ -252,12 +259,12 @@ export default function GasConvert() {
 							<option value="C">℃</option>
 							<option value="F">F</option>
 						</select>
-						<label className={styles.label} htmlFor="pressure">
+						<label className={styles.label} htmlFor="outPres">
 							Pressure:{' '}
 						</label>
 						<input
 							{...register('outPres')}
-							type="text"
+							type="number"
 							className={styles.input}
 						/>
 						<select
