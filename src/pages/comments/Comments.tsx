@@ -14,7 +14,15 @@ export default function GasConvert() {
 			</Head>
 			<div>
 				<main className={styles.main}>
-					<button>Add a comment</button>
+					<button
+						onClick={() => {
+							alert(
+								'This button doesnt currently do anything. More features to come soon!'
+							);
+						}}
+					>
+						Add a comment
+					</button>
 					{data ? (
 						data.map((comment) => (
 							<Comment
