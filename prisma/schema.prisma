@@ -21,6 +21,13 @@ model Star {
   constellation   String    @db.VarChar(255)
 }
 
+model Comment {
+  id              Int       @default(autoincrement()) @id
+  createdAt       DateTime  @default(now())
+  text            String    @db.VarChar(255)
+  author          String    @db.VarChar(255)
+}
+
 // Neccessary for Next auth
 model Account {
     id                String  @id @default(cuid())

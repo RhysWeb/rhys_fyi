@@ -150,7 +150,7 @@ function Output({ control }: { control: Control<FormValues> }) {
 	let Q2 = convertFlowFromLitersPerMinTo(Q2inLitresPerMin, outFlowUnit).toFixed(
 		2
 	);
-	console.log(P1);
+
 	return <input value={Q2} type="text" className={styles.output} />;
 	// return <div style={{ color: 'blue' }}>{result}</div>;
 }
@@ -177,11 +177,11 @@ export default function GasConvert() {
 			<Head>
 				<title>Convert Gas</title>
 				<meta
-					name="description"
+					name="Flowrate converter"
 					content="An app for converting gas flowrates based on temp pressure and units"
 				/>
-				<link rel="icon" href="/favicon.ico" />
 			</Head>
+
 			<div>
 				<main className={styles.main}>
 					<form className={styles.cellsGridContainer}>
