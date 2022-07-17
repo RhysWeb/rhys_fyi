@@ -4,7 +4,7 @@ import { Comment } from '../../components/Comment/Comment';
 
 import styles from './comments.module.css';
 
-export default function GasConvert() {
+export default function Comments() {
 	const { data } = trpc.useQuery(['comment.getAll']);
 	return (
 		<div className={styles.container}>
