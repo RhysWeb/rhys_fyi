@@ -1,35 +1,19 @@
 .card {
 	width: clamp(300px, 75vw, 1000px);
 	margin-block: 0.5rem;
-	padding-inline: 1rem;
-	padding-bottom: 1rem;
+	padding: 1rem;
 	border-radius: 0.5rem;
-	border: black 1px solid;
-	/* width:clamp(300px, 75vw, 1000px); */
+	border: black 2px solid;
+	background-color: hsl(0, 0%, 95%);
 }
 
-.block {
-	display: flex;
-	flex-direction: row;
+.input {
+	resize: none;
+	height: auto;
+	font-family: inherit;
+	width: 100%;
 }
 
-.commentdiv {
-	display: column;
-	flex-direction: row;
-}
-
-.fieldName {
-	/* font-size: 1.2em;
-	font-weight: bold; */
-}
-
-.name {
-	font-weight: bold;
-	margin-left: 0.5rem;
-}
-.content {
-	font-weight: bold;
-}
-.date {
-	margin-top: 1rem;
+.gap {
+	height: 1rem;
 }

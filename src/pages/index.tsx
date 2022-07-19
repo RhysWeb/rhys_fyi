@@ -46,9 +46,7 @@ const Home: NextPage = () => {
 						<Link href="/gasconvert">
 							<a className={styles.link}>Gas conversion</a>
 						</Link>
-						<Link href="/GasConvert">
-							<a className={styles.link}>Other information</a>
-						</Link>
+
 						<Link href="/comments">
 							<a className={styles.link}>Leave a comment</a>
 						</Link>

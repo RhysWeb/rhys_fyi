@@ -5,7 +5,9 @@ import { prisma } from '../../server/db/client';
 export const commentRouter = createRouter()
 	.query('getAll', {
 		async resolve() {
-			return await prisma.comment.findMany();
+			return await prisma.comment.findMany({
+				orderBy: { createdAt: 'desc' },
+			});
 		},
 	})
 	.mutation('addComment', {

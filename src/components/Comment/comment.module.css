@@ -18,11 +18,6 @@
 	flex-direction: row;
 }
 
-.fieldName {
-	/* font-size: 1.2em;
-	font-weight: bold; */
-}
-
 .name {
 	font-weight: bold;
 	margin-left: 0.5rem;

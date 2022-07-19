@@ -8,8 +8,8 @@ import { NewCommentForm } from '../../components/NewCommentForm';
 
 export default function Comments() {
 	const [newComment, setNewComment] = useState(false);
-	const { data } = trpc.useQuery(['comment.getAll']);
-	const commentMutation = trpc.useMutation(['comment.addComment']);
+
+	const { data, refetch } = trpc.useQuery(['comment.getAll']);
 	return (
 		<div className={styles.container}>
 			<Head>
@@ -25,7 +25,9 @@ export default function Comments() {
 					>
 						New comment
 					</button>
-					{newComment && <NewCommentForm />}
+					{newComment && (
+						<NewCommentForm refetch={refetch} setNewComment={setNewComment} />
+					)}
 					{data ? (
 						data.map((comment) => (
 							<div key={comment.id}>

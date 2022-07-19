@@ -151,7 +151,7 @@ function Output({ control }: { control: Control<FormValues> }) {
 		2
 	);
 
-	return <input value={Q2} type="text" className={styles.output} />;
+	return <input value={Q2} type="text" readOnly className={styles.output} />;
 	// return <div style={{ color: 'blue' }}>{result}</div>;
 }
 
@@ -316,27 +316,5 @@ export default function GasConvert() {
 				</main>
 			</div>
 		</div>
-
-		// <div>
-		// 	<h1>Gas Convert</h1>
-		// 	<p>
-		// 		<input
-		// 			type="text"
-		// 			placeholder="Enter the amount of gas you want to convert"
-		// 		/>
-		// 	</p>
-		// 	<p>
-		// 		<input
-		// 			type="text"
-		// 			placeholder="Enter the unit of gas you want to convert"
-		// 		/>
-		// 	</p>
-		// 	<p>
-		// 		<input
-		// 			type="text"
-		// 			placeholder="Enter the unit of gas you want to convert to"
-		// 		/>
-		// 	</p>
-		// </div>
 	);
 }
