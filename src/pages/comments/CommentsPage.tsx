@@ -6,7 +6,7 @@ import styles from './comments.module.css';
 import { useState } from 'react';
 import { NewCommentForm } from '../../components/NewCommentForm';
 
-export default function Comments() {
+export default function CommentsPage() {
 	const [newComment, setNewComment] = useState(false);
 
 	const { data, refetch } = trpc.useQuery(['comment.getAll']);

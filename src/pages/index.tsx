@@ -43,11 +43,11 @@ const Home: NextPage = () => {
 
 					<div className={styles.linksContainer}>
 						<h2>Links</h2>
-						<Link href="/gasconvert">
+						<Link href="/GasConvert">
 							<a className={styles.link}>Gas conversion</a>
 						</Link>
 
-						<Link href="/comments">
+						<Link href="/Comments">
 							<a className={styles.link}>Leave a comment</a>
 						</Link>
 					</div>

@@ -155,7 +155,7 @@ function Output({ control }: { control: Control<FormValues> }) {
 	// return <div style={{ color: 'blue' }}>{result}</div>;
 }
 
-export default function GasConvert() {
+export default function GasConvertPage() {
 	const { register, control } = useForm<FormValues>({
 		defaultValues: {
 			inTemp: 0,
