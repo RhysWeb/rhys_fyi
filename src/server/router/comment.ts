@@ -1,8 +1,26 @@
 import { createRouter } from './context';
 import { z } from 'zod';
+import { prisma } from '../../server/db/client';
 
-export const commentRouter = createRouter().query('getAll', {
-	async resolve({ ctx }) {
-		return await ctx.prisma.comment.findMany();
-	},
-});
+export const commentRouter = createRouter()
+	.query('getAll', {
+		async resolve() {
+			return await prisma.comment.findMany();
+		},
+	})
+	.mutation('addComment', {
+		input: z.object({
+			text: z.string(),
+			author: z.string(),
+		}),
+		async resolve({ input }) {
+			const commentInDb = await prisma.comment.create({
+				data: {
+					text: input.text,
+					author: input.author,
+				},
+			});
+			console.log(commentInDb);
+			return commentInDb;
+		},
+	});

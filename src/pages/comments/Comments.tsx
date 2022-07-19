@@ -3,9 +3,13 @@ import { trpc } from '../../utils/trpc';
 import { Comment } from '../../components/Comment/Comment';
 
 import styles from './comments.module.css';
+import { useState } from 'react';
+import { NewCommentForm } from '../../components/NewCommentForm';
 
 export default function Comments() {
+	const [newComment, setNewComment] = useState(false);
 	const { data } = trpc.useQuery(['comment.getAll']);
+	const commentMutation = trpc.useMutation(['comment.addComment']);
 	return (
 		<div className={styles.container}>
 			<Head>
@@ -16,21 +20,21 @@ export default function Comments() {
 				<main className={styles.main}>
 					<button
 						onClick={() => {
-							alert(
-								'This button doesnt currently do anything. More features to come soon!'
-							);
+							setNewComment(!newComment);
 						}}
 					>
-						Add a comment
+						New comment
 					</button>
+					{newComment && <NewCommentForm />}
 					{data ? (
 						data.map((comment) => (
-							<Comment
-								key={comment.id}
-								author={comment.author}
-								text={comment.text}
-								createdAt={comment.createdAt}
-							/>
+							<div key={comment.id}>
+								<Comment
+									author={comment.author}
+									text={comment.text}
+									createdAt={comment.createdAt}
+								/>
+							</div>
 						))
 					) : (
 						<p>Loading..</p>
