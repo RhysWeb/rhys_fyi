@@ -2,7 +2,7 @@ import Head from 'next/head';
 import { trpc } from '../../utils/trpc';
 import { Comment } from '../../components/Comment/Comment';
 
-import styles from './comments.module.css';
+import styles from './CommentsPage.module.css';
 import { useState } from 'react';
 import { NewCommentForm } from '../../components/NewCommentForm';
 

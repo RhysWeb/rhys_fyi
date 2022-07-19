@@ -54,7 +54,7 @@ const Home: NextPage = () => {
 					{data ? (
 						<p>{`Database Test: ${data[0]?.name} ${data[0]?.constellation}`}</p>
 					) : (
-						<p>Database Test: Loading..</p>
+						<p>Database Test: Loading...</p>
 					)}
 					{/* <a href="/GasConvert" target="_blank" rel="noreferrer">
 						TypeScript

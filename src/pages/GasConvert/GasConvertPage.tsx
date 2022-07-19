@@ -1,6 +1,6 @@
 import Head from 'next/head';
 
-import styles from './GasConvert.module.css';
+import styles from './GasConvertPage.module.css';
 import { useForm, useWatch, Control } from 'react-hook-form';
 
 function convertTempToKelvin(temp: number, unit: string): number {
