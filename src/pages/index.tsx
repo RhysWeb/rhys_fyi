@@ -47,7 +47,7 @@ const Home: NextPage = () => {
 							<a className={styles.link}>Gas conversion</a>
 						</Link>
 
-						<Link href="/Comments">
+						<Link href="/comments">
 							<a className={styles.link}>Leave a comment</a>
 						</Link>
 					</div>
