@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import { useForm } from 'react-hook-form';
-import styles from '../styles/gasconvert.module.css';
-import { FlowOutput } from '../components/FlowOutput';
+import styles from './gases.module.css';
+import { FlowOutput } from '../../components/FlowOutput';
 
 let PressureUnitOptions = (
 	<>
@@ -39,7 +39,7 @@ let TemperatureUnitOptions = (
 	</>
 );
 
-export type FormValues = {
+type FormValues = {
 	inTemp: number;
 	inTempUnit: string;
 	inPres: number;
@@ -54,7 +54,7 @@ export type FormValues = {
 	outFlowUnit: string;
 };
 
-export default function GasConvertPage() {
+export default function Gases() {
 	const { register, control } = useForm<FormValues>({
 		defaultValues: {
 			inTemp: 0,

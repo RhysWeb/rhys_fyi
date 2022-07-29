@@ -43,6 +43,10 @@ const Home: NextPage = () => {
 					<Link href="/comments">
 						<a className={styles.link}>Comments</a>
 					</Link>
+
+					<Link href="/gases">
+						<a className={styles.link}>Gases 2</a>
+					</Link>
 				</div>
 			</div>
 		</div>

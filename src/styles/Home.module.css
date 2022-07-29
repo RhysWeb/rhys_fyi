@@ -20,7 +20,7 @@
 	align-items: center;
 }
 
-.linksTitle {
+.linksContainer {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -28,8 +28,8 @@
 	margin-block: 1.5rem;
 }
 
-.h2 {
-	color: blue;
+.linksTitle {
+	color: rgb(234, 0, 255);
 }
 
 .link {
