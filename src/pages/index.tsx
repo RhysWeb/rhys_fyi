@@ -1,50 +1,11 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
 import Link from 'next/link';
-import styled from 'styled-components';
-
-const Title = styled.h1`
-	color: blue;
-	margin: 0;
-	line-height: 1.15;
-	font-size: 5rem;
-	text-align: center;
-`;
-
-const PageContainer = styled.div`
-	padding: 0 2rem;
-`;
-
-const Main = styled.div`
-	min-height: 100vh;
-	padding: 4rem 0;
-	flex: 1;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-`;
-
-const LinksContainer = styled.div`
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	margin-block: 1.5rem;
-`;
-
-const H2 = styled.h2`
-	color: blue;
-`;
-
-const A = styled.a`
-	font-size: 1.5rem;
-	margin-block: 0.5rem;
-`;
+import styles from '../styles/Home.module.css';
 
 const Home: NextPage = () => {
 	return (
-		<PageContainer>
+		<div className={styles.pageContainer}>
 			<Head>
 				<title>Chem Eng</title>
 				<meta name="Main page" content="Chemical engineering helper tools" />
@@ -70,21 +31,21 @@ const Home: NextPage = () => {
 				<link rel="manifest" href="/site.webmanifest" />
 			</Head>
 
-			<Main>
-				<Title as="h1">Hello</Title>
+			<div className={styles.main}>
+				<h1 className={styles.title}>Hello</h1>
 
-				<LinksContainer>
-					<H2>Links</H2>
+				<div className={styles.linksContainer}>
+					<h2 className={styles.linksTitle}>Links</h2>
 					<Link href="/gasconvert">
-						<A as="a">Gas conversion</A>
+						<a className={styles.link}>Gas conversion</a>
 					</Link>
 
 					<Link href="/comments">
-						<A>Comments</A>
+						<a className={styles.link}>Comments</a>
 					</Link>
-				</LinksContainer>
-			</Main>
-		</PageContainer>
+				</div>
+			</div>
+		</div>
 	);
 };
 
