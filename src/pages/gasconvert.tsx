@@ -1,7 +1,91 @@
 import Head from 'next/head';
-
-import styles from './GasConvertPage.module.css';
 import { useForm, useWatch, Control } from 'react-hook-form';
+import styled from 'styled-components';
+
+//Styled Components
+const PageContainer = styled.div`
+	padding: 0 2rem;
+`;
+
+const Main = styled.div`
+	min-height: 100vh;
+	padding: 4rem 0;
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	--cellHeight: 1.8rem;
+	--cellWidth: 7rem;
+`;
+
+const Form = styled.form`
+	display: inline-grid;
+	grid-template-columns: auto auto auto;
+	margin-block: 1.5rem;
+	gap: 5px;
+`;
+
+const Header = styled.div`
+	grid-column-start: 1;
+	grid-column-end: 4;
+	text-align: center;
+	font-weight: bold;
+	margin-block: 2rem 0.5rem;
+`;
+
+const Label = styled.label`
+	height: var(--cellHeight);
+	width: var(--cellWidth);
+`;
+
+const Input = styled.input`
+	background-color: hsl(114, 69%, 77%);
+	height: var(--cellHeight);
+	width: var(--cellWidth);
+`;
+
+const OutputStyled = styled.input`
+	background-color: hsl(60, 93%, 71%);
+	height: var(--cellHeight);
+	width: var(--cellWidth);
+`;
+
+let PressureUnitOptions = (
+	<>
+		<option value="barG">barG</option>
+		<option value="barA">barA</option>
+		<option value="PaG">Pa gauge</option>
+		<option value="PaA">Pa abs</option>
+		<option value="psiG">psi gauge</option>
+		<option value="psiA">psi abs</option>
+		<option value="kPaG">kPa gauge</option>
+		<option value="kPaA">kPa abs</option>
+		<option value="mmH2OA">mmH2O abs</option>
+		<option value="mmH2OG">mmH2O gauge</option>
+		<option value="atmG">atm gauge </option>
+		<option value="atmA">atm abs</option>
+	</>
+);
+
+let flowUnitOptions = (
+	<>
+		<option value="L/min">litres/min</option>
+		<option value="L/s">litres/sec</option>
+		<option value="L/h">litres/hour</option>
+		<option value="m3/s">m3/sec</option>
+		<option value="m3/min">m3/min</option>
+		<option value="m3/h">m3/hour</option>
+	</>
+);
+
+let TemperatureUnitOptions = (
+	<>
+		<option value="C">℃</option>
+		<option value="K">K</option>
+		<option value="F">F</option>
+	</>
+);
 
 function convertTempToKelvin(temp: number, unit: string): number {
 	let tempNum = Number(temp);
@@ -151,7 +235,7 @@ function Output({ control }: { control: Control<FormValues> }) {
 		2
 	);
 
-	return <input value={Q2} type="text" readOnly className={styles.output} />;
+	return <OutputStyled value={Q2} type="text" readOnly />;
 	// return <div style={{ color: 'blue' }}>{result}</div>;
 }
 
@@ -173,7 +257,7 @@ export default function GasConvertPage() {
 	});
 
 	return (
-		<div className={styles.container}>
+		<PageContainer>
 			<Head>
 				<title>Convert Gas</title>
 				<meta
@@ -182,139 +266,47 @@ export default function GasConvertPage() {
 				/>
 			</Head>
 
-			<div>
-				<main className={styles.main}>
-					<form className={styles.cellsGridContainer}>
-						<div className={styles.gridHeader}>Initial conditions</div>
+			<Main>
+				<Form>
+					<Header>Initial conditions</Header>
 
-						<label className={styles.label} htmlFor="inTemp">
-							Temperature:{' '}
-						</label>
-						<input
-							{...register('inTemp')}
-							type="number"
-							className={styles.input}
-						/>
-						<select
-							{...register('inTempUnit')}
-							className={styles.gridItem}
-							id="temperatureUnit"
-						>
-							<option value="C">℃</option>
-							<option value="K">K</option>
-							<option value="F">F</option>
-						</select>
+					<Label htmlFor="inTemp">Temperature: </Label>
+					<Input {...register('inTemp')} type="number" />
+					<select {...register('inTempUnit')} id="temperatureUnit">
+						{TemperatureUnitOptions}
+					</select>
 
-						<label className={styles.label} htmlFor="inPres">
-							Pressure:{' '}
-						</label>
-						<input
-							{...register('inPres')}
-							type="number"
-							className={styles.input}
-						/>
-						<select
-							className={styles.gridItem}
-							{...register('inPresUnit')}
-							id="inPresUnit"
-						>
-							<option value="barG">barG</option>
-							<option value="barA">barA</option>
-							<option value="PaG">Pa gauge</option>
-							<option value="PaA">Pa abs</option>
-							<option value="psiG">psi gauge</option>
-							<option value="psiA">psi abs</option>
-							<option value="kPaG">kPa gauge</option>
-							<option value="kPaA">kPa abs</option>
-							<option value="mmH2OA">mmH2O abs</option>
-							<option value="mmH2OG">mmH2O gauge</option>
-							<option value="atmG">atm gauge </option>
-							<option value="atmA">atm abs</option>
-						</select>
+					<Label htmlFor="inPres">Pressure: </Label>
+					<Input {...register('inPres')} type="number" />
+					<select {...register('inPresUnit')} id="inPresUnit">
+						{PressureUnitOptions}
+					</select>
 
-						<label className={styles.label} htmlFor="inFlow">
-							Flowrate:{' '}
-						</label>
-						<input
-							{...register('inFlow')}
-							type="number"
-							className={styles.input}
-						/>
-						<select
-							className={styles.gridItem}
-							{...register('inFlowUnit')}
-							id="inFlowUnit"
-						>
-							<option value="L/min">litres/min</option>
-							<option value="L/s">litres/sec</option>
-							<option value="L/h">litres/hour</option>
-							<option value="m3/s">m3/sec</option>
-							<option value="m3/min">m3/min</option>
-							<option value="m3/h">m3/hour</option>
-						</select>
-						<div className={`${styles.gridHeader} ${styles.tableHeader}`}>
-							Final conditions
-						</div>
+					<Label htmlFor="inFlow">Flowrate: </Label>
+					<Input {...register('inFlow')} type="number" />
+					<select {...register('inFlowUnit')} id="inFlowUnit">
+						{flowUnitOptions}
+					</select>
+					<Header>Final conditions</Header>
 
-						<label className={styles.label} htmlFor="outTemp">
-							Temperature:{' '}
-						</label>
-						<input
-							{...register('outTemp')}
-							type="number"
-							className={styles.input}
-						/>
-						<select
-							className={styles.gridItem}
-							{...register('outTempUnit')}
-							id="outTempUnit"
-						>
-							<option value="C">℃</option>
-							<option value="K">K</option>
-							<option value="F">F</option>
-						</select>
-						<label className={styles.label} htmlFor="outPres">
-							Pressure:{' '}
-						</label>
-						<input
-							{...register('outPres')}
-							type="number"
-							className={styles.input}
-						/>
-						<select
-							className={styles.gridItem}
-							{...register('outPresUnit')}
-							id="outPresUnit"
-						>
-							<option value="barG">barG</option>
-							<option value="barA">barA</option>
-							<option value="PaG">Pa gauge</option>
-							<option value="PaA">Pa abs</option>
-							<option value="kPaG">kPa gauge</option>
-							<option value="kPaA">kPa abs</option>
-							<option value="mmH2OA">mmH2O abs</option>
-							<option value="mmH2OG">mmH2O gauge</option>
-						</select>
-						<label className={styles.label} htmlFor="outputFlowrate">
-							Flowrate:{' '}
-						</label>
-						<Output control={control} />
+					<Label htmlFor="outTemp">Temperature: </Label>
+					<Input {...register('outTemp')} type="number" />
+					<select {...register('outTempUnit')} id="outTempUnit">
+						{TemperatureUnitOptions}
+					</select>
+					<Label htmlFor="outPres">Pressure: </Label>
+					<Input {...register('outPres')} type="number" />
+					<select {...register('outPresUnit')} id="outPresUnit">
+						{PressureUnitOptions}
+					</select>
+					<Label htmlFor="outputFlowrate">Flowrate: </Label>
+					<Output control={control} />
 
-						<select
-							className={styles.gridItem}
-							{...register('outFlowUnit')}
-							id="outFlowUnit"
-						>
-							<option value="L/min">litres/min</option>
-							<option value="L/s">litres/sec</option>
-							<option value="L/h">litres/hour</option>
-							<option value="m3/s">m3/sec</option>
-							<option value="m3/min">m3/min</option>
-							<option value="m3/h">m3/hour</option>
-						</select>
-					</form>
-				</main>
-			</div>
-		</div>
+					<select {...register('outFlowUnit')} id="outFlowUnit">
+						{flowUnitOptions}
+					</select>
+				</Form>
+			</Main>
+		</PageContainer>
 	);
 }

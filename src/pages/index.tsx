@@ -1,18 +1,50 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
-import { trpc } from '../utils/trpc';
-import styles from '../styles/Home.module.css';
 import Link from 'next/link';
+import styled from 'styled-components';
+
+const Title = styled.h1`
+	color: blue;
+	margin: 0;
+	line-height: 1.15;
+	font-size: 5rem;
+	text-align: center;
+`;
+
+const PageContainer = styled.div`
+	padding: 0 2rem;
+`;
+
+const Main = styled.div`
+	min-height: 100vh;
+	padding: 4rem 0;
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+`;
+
+const LinksContainer = styled.div`
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	margin-block: 1.5rem;
+`;
+
+const H2 = styled.h2`
+	color: blue;
+`;
+
+const A = styled.a`
+	font-size: 1.5rem;
+	margin-block: 0.5rem;
+`;
 
 const Home: NextPage = () => {
-	// const { data, isLoading } = trpc.useQuery([
-	// 	'example.hello',
-	// 	{ text: 'from tRPC' },
-	// ]);
-	const { data, isLoading } = trpc.useQuery(['star.getAll']);
-
 	return (
-		<div className={styles.container}>
+		<PageContainer>
 			<Head>
 				<title>Chem Eng</title>
 				<meta name="Main page" content="Chemical engineering helper tools" />
@@ -37,31 +69,22 @@ const Home: NextPage = () => {
 				/>
 				<link rel="manifest" href="/site.webmanifest" />
 			</Head>
-			<div>
-				<main className={styles.main}>
-					<h1 className={styles.title}>Hello</h1>
 
-					<div className={styles.linksContainer}>
-						<h2>Links</h2>
-						<Link href="/GasConvert">
-							<a className={styles.link}>Gas conversion</a>
-						</Link>
+			<Main>
+				<Title as="h1">Hello</Title>
 
-						<Link href="/comments">
-							<a className={styles.link}>Leave a comment</a>
-						</Link>
-					</div>
-					{data ? (
-						<p>{`Database Test: ${data[0]?.name} ${data[0]?.constellation}`}</p>
-					) : (
-						<p>Database Test: Loading...</p>
-					)}
-					{/* <a href="/GasConvert" target="_blank" rel="noreferrer">
-						TypeScript
-					</a> */}
-				</main>
-			</div>
-		</div>
+				<LinksContainer>
+					<H2>Links</H2>
+					<Link href="/gasconvert">
+						<A as="a">Gas conversion</A>
+					</Link>
+
+					<Link href="/comments">
+						<A>Comments</A>
+					</Link>
+				</LinksContainer>
+			</Main>
+		</PageContainer>
 	);
 };
 
