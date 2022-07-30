@@ -4,6 +4,7 @@ import { Comment } from '../components/Comment';
 import { useState } from 'react';
 import { NewCommentForm } from '../components/NewCommentForm';
 import styled from 'styled-components';
+import { ContainerOne } from '../components/ContainerOne';
 
 //Styled Components
 const PageContainer = styled.div`
@@ -11,7 +12,6 @@ const PageContainer = styled.div`
 `;
 
 const Main = styled.div`
-	min-height: 100vh;
 	padding: 4rem 0;
 	flex: 1;
 	display: flex;
@@ -27,7 +27,7 @@ const CommentsPage = () => {
 
 	const { data, refetch } = trpc.useQuery(['comment.getAll']);
 	return (
-		<PageContainer>
+		<ContainerOne>
 			<Head>
 				<title>Comments</title>
 				<meta name="Comments" content="a place to record comments" />
@@ -58,7 +58,7 @@ const CommentsPage = () => {
 					<p>Loading..</p>
 				)}
 			</Main>
-		</PageContainer>
+		</ContainerOne>
 	);
 };
 

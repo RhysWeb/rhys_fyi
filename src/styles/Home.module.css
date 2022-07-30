@@ -1,17 +1,13 @@
 .title {
-	color: blue;
-	margin: 0;
+	color: var(--primary-text);
+	margin: 2rem 0;
 	line-height: 1.15;
 	font-size: 5rem;
 	text-align: center;
 }
 
-.pageContainer {
-	padding: 0 2rem;
-}
-
 .main {
-	min-height: 100vh;
+	/* min-height: 100vh; */
 	padding: 4rem 0;
 	flex: 1;
 	display: flex;
@@ -29,10 +25,12 @@
 }
 
 .linksTitle {
-	color: rgb(234, 0, 255);
+	color: var(--secondary);
+	font-size: 2rem;
 }
 
 .link {
 	font-size: 1.5rem;
 	margin-block: 0.5rem;
+	color: var(--primary-text);
 }
