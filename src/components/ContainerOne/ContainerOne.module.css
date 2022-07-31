@@ -15,7 +15,7 @@
 
 .selected {
 	font-weight: var(--font-weight-6);
-	color: red;
+	color: var(--secondary);
 }
 
 /* layout contains the background */

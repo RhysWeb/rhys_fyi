@@ -3,8 +3,13 @@
 	margin-block: 0.5rem;
 	padding: 1rem;
 	border-radius: 0.5rem;
-	border: black 2px solid;
-	background-color: hsl(0, 0%, 95%);
+	/* border: black 2px solid; */
+	background-color: hsl(35, 98%, 59%);
+}
+
+.label {
+	font-weight: bold;
+	color: black;
 }
 
 .input {
@@ -12,6 +17,7 @@
 	height: auto;
 	font-family: inherit;
 	width: 100%;
+	color: black;
 }
 
 .gap {

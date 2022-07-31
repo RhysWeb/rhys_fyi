@@ -1,43 +1,14 @@
 import { useForm } from 'react-hook-form';
 import styles from './gases.module.css';
-import { FlowOutput } from '../../components/FlowOutput';
-import { ContainerOne } from '../../components/ContainerOne';
-
-let PressureUnitOptions = (
-	<>
-		<option value="barG">barG</option>
-		<option value="barA">barA</option>
-		<option value="PaG">Pa gauge</option>
-		<option value="PaA">Pa abs</option>
-		<option value="psiG">psi gauge</option>
-		<option value="psiA">psi abs</option>
-		<option value="kPaG">kPa gauge</option>
-		<option value="kPaA">kPa abs</option>
-		<option value="mmH2OA">mmH2O abs</option>
-		<option value="mmH2OG">mmH2O gauge</option>
-		<option value="atmG">atm gauge </option>
-		<option value="atmA">atm abs</option>
-	</>
-);
-
-let flowUnitOptions = (
-	<>
-		<option value="L/min">litres/min</option>
-		<option value="L/s">litres/sec</option>
-		<option value="L/h">litres/hour</option>
-		<option value="m3/s">m3/sec</option>
-		<option value="m3/min">m3/min</option>
-		<option value="m3/h">m3/hour</option>
-	</>
-);
-
-let TemperatureUnitOptions = (
-	<>
-		<option value="C">℃</option>
-		<option value="K">K</option>
-		<option value="F">F</option>
-	</>
-);
+import { FlowOutput } from '../../components/FlowOutput/FlowOutput';
+import { ContainerOne } from '../../components/ContainerOne/ContainerOne';
+import Head from 'next/head';
+import {
+	PressureUnitOptions,
+	flowUnitOptions,
+	TemperatureUnitOptions,
+	defaultValues,
+} from '../../utils/pressureAndTempFunctions';
 
 type FormValues = {
 	inTemp: number;
@@ -56,23 +27,18 @@ type FormValues = {
 
 export default function Gases() {
 	const { register, control } = useForm<FormValues>({
-		defaultValues: {
-			inTemp: 0,
-			inPres: 2,
-			inFlow: 100,
-			outTemp: 15,
-			outPres: 0,
-			outFlowUnit: 'L/min',
-			outPresUnit: 'barG',
-			inTempUnit: 'C',
-			inPresUnit: 'barG',
-			inFlowUnit: 'L/min',
-			outTempUnit: 'C',
-		},
+		defaultValues: defaultValues,
 	});
 
 	return (
 		<ContainerOne>
+			<Head>
+				<title>CE - Gas Conversion</title>
+				<meta
+					name="Content"
+					content="Convert flowrate of ideal gases based on new temperature and pressure conditions"
+				/>
+			</Head>
 			<form className={styles.form}>
 				<div className={styles.header}>Initial conditions</div>
 
@@ -80,7 +46,11 @@ export default function Gases() {
 					Temperature:{' '}
 				</label>
 				<input className={styles.input} {...register('inTemp')} type="number" />
-				<select {...register('inTempUnit')} id="temperatureUnit">
+				<select
+					className={styles.select}
+					{...register('inTempUnit')}
+					id="temperatureUnit"
+				>
 					{TemperatureUnitOptions}
 				</select>
 
@@ -88,7 +58,11 @@ export default function Gases() {
 					Pressure:{' '}
 				</label>
 				<input className={styles.input} {...register('inPres')} type="number" />
-				<select {...register('inPresUnit')} id="inPresUnit">
+				<select
+					className={styles.select}
+					{...register('inPresUnit')}
+					id="inPresUnit"
+				>
 					{PressureUnitOptions}
 				</select>
 
@@ -96,7 +70,11 @@ export default function Gases() {
 					Flowrate:{' '}
 				</label>
 				<input className={styles.input} {...register('inFlow')} type="number" />
-				<select {...register('inFlowUnit')} id="inFlowUnit">
+				<select
+					className={styles.select}
+					{...register('inFlowUnit')}
+					id="inFlowUnit"
+				>
 					{flowUnitOptions}
 				</select>
 				<div className={styles.header}>Final conditions</div>
@@ -109,7 +87,11 @@ export default function Gases() {
 					{...register('outTemp')}
 					type="number"
 				/>
-				<select {...register('outTempUnit')} id="outTempUnit">
+				<select
+					className={styles.select}
+					{...register('outTempUnit')}
+					id="outTempUnit"
+				>
 					{TemperatureUnitOptions}
 				</select>
 
@@ -121,7 +103,11 @@ export default function Gases() {
 					{...register('outPres')}
 					type="number"
 				/>
-				<select {...register('outPresUnit')} id="outPresUnit">
+				<select
+					className={styles.select}
+					{...register('outPresUnit')}
+					id="outPresUnit"
+				>
 					{PressureUnitOptions}
 				</select>
 
@@ -130,7 +116,11 @@ export default function Gases() {
 				</label>
 				<FlowOutput control={control} />
 
-				<select {...register('outFlowUnit')} id="outFlowUnit">
+				<select
+					className={styles.select}
+					{...register('outFlowUnit')}
+					id="outFlowUnit"
+				>
 					{flowUnitOptions}
 				</select>
 			</form>

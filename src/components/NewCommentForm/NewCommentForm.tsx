@@ -36,12 +36,12 @@ export const NewCommentForm: React.FC<Props> = ({ refetch, setNewComment }) => {
 			onSubmit={handleSubmit(onSubmit)}
 			autoComplete="off"
 		>
-			<label htmlFor="name">
+			<label className={styles.label} htmlFor="name">
 				Name:{' '}
 				<input {...register('author')} type="text" className={styles.input} />
 			</label>
 			<div className={styles.gap} />
-			<label htmlFor="text">
+			<label className={styles.label} htmlFor="text">
 				Comment:{' '}
 				<textarea {...register('text')} className={styles.input} rows={3} />
 			</label>

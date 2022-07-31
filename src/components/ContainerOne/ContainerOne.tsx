@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 import { useState, useEffect } from 'react';
 import { useTheme } from 'next-themes';
 import Link from 'next/link';
-import styles from './Container.module.css';
+import styles from './ContainerOne.module.css';
 import Image from 'next/image';
 
 interface Props {
@@ -50,7 +50,6 @@ export const ContainerOne: React.FC<any> = (props) => {
 	return (
 		<div className={styles.layout}>
 			<Head>
-				<title>{meta.title}</title>
 				<meta name="robots" content="follow, index" />
 				<meta content={meta.description} name="description" />
 

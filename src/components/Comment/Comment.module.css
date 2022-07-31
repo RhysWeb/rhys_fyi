@@ -1,0 +1,27 @@
+.card {
+	width: clamp(300px, 75vw, 1000px);
+	margin-block: 0.5rem;
+	padding-inline: 1rem;
+	padding-bottom: 1rem;
+	border-radius: 0.5rem;
+	border: var(--secondary) 1px solid;
+	background-color: var(--background-plain);
+}
+.block {
+	display: flex;
+	flex-direction: row;
+}
+.commentDiv {
+	display: column;
+	flex-direction: row;
+}
+.name {
+	font-weight: bold;
+	margin-left: 0.5rem;
+}
+.content {
+	font-weight: bold;
+}
+.date {
+	margin-top: 1rem;
+}

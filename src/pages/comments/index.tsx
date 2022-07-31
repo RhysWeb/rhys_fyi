@@ -1,40 +1,24 @@
 import Head from 'next/head';
-import { trpc } from '../utils/trpc';
-import { Comment } from '../components/Comment';
+import { trpc } from '../../utils/trpc';
+import { Comment } from '../../components/Comment/Comment';
 import { useState } from 'react';
-import { NewCommentForm } from '../components/NewCommentForm';
-import styled from 'styled-components';
-import { ContainerOne } from '../components/ContainerOne';
-
-//Styled Components
-const PageContainer = styled.div`
-	padding: 0 2rem;
-`;
-
-const Main = styled.div`
-	padding: 4rem 0;
-	flex: 1;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	--cellHeight: 1.8rem;
-	--cellWidth: 7rem;
-`;
+import { NewCommentForm } from '../../components/NewCommentForm/NewCommentForm';
+import styles from './commentsPage.module.css';
+import { ContainerOne } from '../../components/ContainerOne/ContainerOne';
 
 const CommentsPage = () => {
 	const [newComment, setNewComment] = useState(false);
-
 	const { data, refetch } = trpc.useQuery(['comment.getAll']);
+
 	return (
 		<ContainerOne>
 			<Head>
-				<title>Comments</title>
-				<meta name="Comments" content="a place to record comments" />
+				<title>CE - Comments</title>
 			</Head>
 
-			<Main>
+			<div className={styles.main}>
 				<button
+					className={styles.button}
 					onClick={() => {
 						setNewComment(!newComment);
 					}}
@@ -57,7 +41,7 @@ const CommentsPage = () => {
 				) : (
 					<p>Loading..</p>
 				)}
-			</Main>
+			</div>
 		</ContainerOne>
 	);
 };

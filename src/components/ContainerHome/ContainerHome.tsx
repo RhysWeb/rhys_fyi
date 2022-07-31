@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import { useRouter } from 'next/router';
+//import { useRouter } from 'next/router';
 import { useState, useEffect } from 'react';
 import { useTheme } from 'next-themes';
 // import Link from 'next/link';
@@ -50,7 +50,6 @@ export const ContainerHome: React.FC<any> = (props) => {
 	return (
 		<div className={styles.layout}>
 			<Head>
-				<title>{meta.title}</title>
 				<meta name="robots" content="follow, index" />
 				<meta content={meta.description} name="description" />
 

@@ -7,7 +7,6 @@
 }
 
 .main {
-	/* min-height: 100vh; */
 	padding: 4rem 0;
 	flex: 1;
 	display: flex;
@@ -27,10 +26,11 @@
 .linksTitle {
 	color: var(--secondary);
 	font-size: 2rem;
+	margin-bottom: 1rem;
 }
 
 .link {
 	font-size: 1.5rem;
-	margin-block: 0.5rem;
+	/* margin-block: 0.5rem; */
 	color: var(--primary-text);
 }

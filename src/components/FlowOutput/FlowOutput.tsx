@@ -1,4 +1,4 @@
-import styles from '../../styles/gasconvert.module.css';
+import styles from './FlowOutput.module.css';
 import { useWatch, Control } from 'react-hook-form';
 import {
 	convertTempToKelvin,

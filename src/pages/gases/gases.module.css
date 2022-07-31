@@ -1,22 +1,10 @@
-.pageContainer {
-	padding: 0 2rem;
-}
-.main {
-	/* min-height: 100vh; */
-	padding: 4rem 0;
-	flex: 1;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	--cellHeight: 1.8rem;
-	--cellWidth: 7rem;
-}
 .form {
 	display: inline-grid;
 	grid-template-columns: auto auto auto;
 	margin-block: 1.5rem;
 	gap: 5px;
+	--cellHeight: 2rem;
+	--cellWidth: 7rem;
 }
 .header {
 	grid-column-start: 1;
@@ -33,6 +21,12 @@
 	background-color: hsl(114, 69%, 77%);
 	height: var(--cellHeight);
 	width: var(--cellWidth);
+	color: black;
+}
+.select {
+	height: var(--cellHeight);
+	width: var(--cellWidth);
+	color: black;
 }
 .outputStyled {
 	background-color: hsl(60, 93%, 71%);
