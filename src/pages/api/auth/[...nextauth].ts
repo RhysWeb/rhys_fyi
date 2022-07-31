@@ -15,5 +15,5 @@ export default NextAuth({
 		}),
 		// ...add more providers here
 	],
-	secret: process.env.JVT_SECRET,
+	secret: process.env.JWT_SECRET,
 });
