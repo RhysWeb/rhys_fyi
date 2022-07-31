@@ -11,7 +11,7 @@ interface Props {
 	text: string;
 }
 
-export const NavItem: React.FC<Props> = ({ href, text }) => {
+const NavItem: React.FC<Props> = ({ href, text }) => {
 	const router = useRouter();
 	const isActive = router.asPath === href;
 

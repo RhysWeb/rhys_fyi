@@ -27,6 +27,7 @@
 	height: var(--cellHeight);
 	width: var(--cellWidth);
 	color: black;
+	background-color: antiquewhite;
 }
 .outputStyled {
 	background-color: hsl(60, 93%, 71%);

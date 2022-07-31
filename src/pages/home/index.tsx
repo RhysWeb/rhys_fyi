@@ -23,6 +23,9 @@ const Home: NextPage = () => {
 					<Link href="/comments">
 						<a className={styles.link}>Comments</a>
 					</Link>
+					<Link href="/protected">
+						<a className={styles.link}>Protected page</a>
+					</Link>
 				</div>
 			</div>
 		</ContainerHome>

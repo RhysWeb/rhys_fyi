@@ -7,7 +7,7 @@ import {
 	convertFlowFromLitersPerMinTo,
 } from '../../utils/pressureAndTempFunctions';
 
-export type FormValues = {
+type FormValues = {
 	inTemp: number;
 	inTempUnit: string;
 	inPres: number;
