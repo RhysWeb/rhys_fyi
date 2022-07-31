@@ -22,7 +22,7 @@ const HomeContents = () => {
 	return (
 		<div>
 			<div className={styles.main}>
-				<h1 className={styles.title}>Protected Page</h1>
+				<h1 className={styles.title}>Protected Page!</h1>
 				<p>
 					{/* {data.user?.image && <img src={data.user?.image} alt="pro pic" />} */}
 					Name: {data.user?.name}
