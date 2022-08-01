@@ -12,7 +12,7 @@ const Home: NextPage = () => {
 			</Head>
 
 			<div className={styles.main}>
-				<h1 className={styles.title}>Hello</h1>
+				<h1 className={styles.title}>Chem Eng Tools</h1>
 
 				<div className={styles.linksContainer}>
 					<h2 className={styles.linksTitle}>Links</h2>
