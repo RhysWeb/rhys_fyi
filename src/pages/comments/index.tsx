@@ -5,11 +5,15 @@ import { useState } from 'react';
 import { NewCommentForm } from '../../components/NewCommentForm/NewCommentForm';
 import styles from './commentsPage.module.css';
 import { ContainerOne } from '../../components/ContainerOne/ContainerOne';
+import ButtonOne from '../../components/ButtonOne/ButtonOne';
 
 const CommentsPage = () => {
 	const [newComment, setNewComment] = useState(false);
 	const { data, refetch } = trpc.useQuery(['comment.getAll']);
 
+	function toggleNewComment() {
+		setNewComment(!newComment);
+	}
 	return (
 		<ContainerOne>
 			<Head>
@@ -17,14 +21,12 @@ const CommentsPage = () => {
 			</Head>
 
 			<div className={styles.main}>
-				<button
-					className={styles.button}
-					onClick={() => {
-						setNewComment(!newComment);
-					}}
-				>
-					New comment
-				</button>
+				<ButtonOne
+					text="New comment"
+					onClick={toggleNewComment}
+					margin="1rem 0 2rem 0"
+				/>
+
 				{newComment && (
 					<NewCommentForm refetch={refetch} setNewComment={setNewComment} />
 				)}
