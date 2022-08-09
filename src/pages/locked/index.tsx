@@ -6,9 +6,9 @@ import { signIn, signOut, useSession } from 'next-auth/react';
 import ButtonOne from '../../components/ButtonOne/ButtonOne';
 
 const Contents = () => {
-	const { data } = useSession();
+	const { data: session } = useSession();
 
-	if (!data)
+	if (!session)
 		return (
 			<div className={`${styles.flexCenter} ${styles.topGap}`}>
 				<p className={styles.signInText}>This is a protected page.</p>
@@ -16,13 +16,13 @@ const Contents = () => {
 
 				<ButtonOne
 					margin="3rem 0 0 0"
-					text="Sign in with Github"
-					onClick={() => signIn('github')}
+					text="Sign in"
+					onClick={() => signIn()}
 				/>
 			</div>
 		);
 
-	if (data.user?.name === 'RhysWeb')
+	if (session.user?.role === 'VALIDATED_USER')
 		return (
 			<div>
 				<div className={styles.main}>
@@ -30,7 +30,7 @@ const Contents = () => {
 					<p>
 						{/* {data.user?.image && <img src={data.user?.image} alt="pro pic" />} */}
 						You are logged in via Github and your username is{' '}
-						<b>{data.user?.name}</b>
+						<b>{session.user?.name}</b>
 					</p>
 
 					<ButtonOne
@@ -48,7 +48,8 @@ const Contents = () => {
 				<h1 className={styles.title}>This isnt for you</h1>
 				<p>
 					{/* {data.user?.image && <img src={data.user?.image} alt="pro pic" />} */}
-					Hi <b>{data.user?.name}</b>. This page is not for you. Please log out.
+					Hi <b>{session.user?.name}</b>. This page is not for you. Please log
+					out.
 				</p>
 
 				<ButtonOne

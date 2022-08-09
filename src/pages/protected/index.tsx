@@ -4,11 +4,20 @@ import styles from './protectedPage.module.css';
 import Head from 'next/head';
 import { signIn, signOut, useSession } from 'next-auth/react';
 import ButtonOne from '../../components/ButtonOne/ButtonOne';
+import { useRouter } from 'next/router';
 
 const Contents = () => {
-	const { data } = useSession();
+	const { data: session, status } = useSession();
+	const { push, asPath } = useRouter();
 
-	if (!data)
+	// const handleSignOut = async () => {
+	// 	const data = await signOut({ redirect: false, callbackUrl: '/' });
+
+	// 	push(data.url);
+	// };
+	// const handleSignIn = () => push(`/auth/signIn?callbackUrl=${asPath}`);
+
+	if (!session)
 		return (
 			<div className={`${styles.flexCenter} ${styles.topGap}`}>
 				<p className={styles.signInText}>This is a protected page.</p>
@@ -16,30 +25,39 @@ const Contents = () => {
 
 				<ButtonOne
 					margin="3rem 0 0 0"
-					text="Sign in with Github"
-					onClick={() => signIn('github')}
+					text="Sign in"
+					onClick={() => {
+						signIn();
+					}}
 				/>
 			</div>
 		);
 
-	return (
-		<div>
-			<div className={styles.main}>
-				<h1 className={styles.title}>You are signed in to a protected page!</h1>
-				<p>
-					{/* {data.user?.image && <img src={data.user?.image} alt="pro pic" />} */}
-					You are logged in via Github and your username is{' '}
-					<b>{data.user?.name}</b>
-				</p>
+	// if (status === 'loading') return <div>Loading...</div>;
 
-				<ButtonOne
-					text="Sign out"
-					onClick={() => signOut()}
-					margin="3rem 0 0 0"
-				/>
+	if (session)
+		return (
+			<div>
+				<div className={styles.main}>
+					<h1 className={styles.title}>
+						You are signed in to a protected page!
+					</h1>
+					<p>
+						{JSON.stringify(session)}
+						You are logged in via Github and your username is{' '}
+						{/* <b>{data.user?.name}</b> */}
+					</p>
+
+					<ButtonOne
+						text="Sign out"
+						onClick={() => {
+							signOut();
+						}}
+						margin="3rem 0 0 0"
+					/>
+				</div>
 			</div>
-		</div>
-	);
+		);
 };
 
 const Protected: NextPage = ({}) => {

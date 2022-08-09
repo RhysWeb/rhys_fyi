@@ -2,7 +2,7 @@
 	color: var(--primary-text);
 	margin: 2rem 0;
 	line-height: 1.15;
-	font-size: 5rem;
+	font-size: var(--font-size-fluid-3);
 	text-align: center;
 }
 
@@ -25,7 +25,7 @@
 
 .linksTitle {
 	color: var(--secondary);
-	font-size: 2rem;
+	font-size: var(--font-size-fluid-2);
 	margin-bottom: 1rem;
 }
 

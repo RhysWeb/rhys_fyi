@@ -36,11 +36,11 @@ model Account {
     provider          String
     providerAccountId String
     refresh_token     String?
-    access_token      String?
+    access_token      String? @db.Text
     expires_at        Int?
     token_type        String?
     scope             String?
-    id_token          String?
+    id_token          String? @db.Text
     session_state     String?
     user              User    @relation(fields: [userId], references: [id], onDelete: Cascade)
 
@@ -60,7 +60,8 @@ model User {
     name          String?
     email         String?   @unique
     emailVerified DateTime?
-    image         String?
+    image         String?  
+    role          Role      @default(USER)  
     accounts      Account[]
     sessions      Session[]
 }
@@ -71,4 +72,10 @@ model VerificationToken {
     expires    DateTime
 
     @@unique([identifier, token])
+}
+
+enum Role {
+    USER
+    VALIDATED_USER
+    ADMIN
 }
