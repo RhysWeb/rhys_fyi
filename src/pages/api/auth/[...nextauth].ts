@@ -42,6 +42,7 @@ export default NextAuth({
 			session = {
 				...session,
 				user: {
+					// @ts-ignore
 					id: user.id,
 					role: user.role,
 					...session.user,
