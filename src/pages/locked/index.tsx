@@ -21,7 +21,7 @@ const Contents = () => {
 				/>
 			</div>
 		);
-
+	// @ts-ignore
 	if (session.user?.role === 'VALIDATED_USER')
 		return (
 			<div>
