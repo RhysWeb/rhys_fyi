@@ -35,29 +35,26 @@ const Contents = () => {
 
 	// if (status === 'loading') return <div>Loading...</div>;
 
-	if (session)
-		return (
-			<div>
-				<div className={styles.main}>
-					<h1 className={styles.title}>
-						You are signed in to a protected page!
-					</h1>
-					<p>
-						{JSON.stringify(session)}
-						You are logged in via Github and your username is{' '}
-						{/* <b>{data.user?.name}</b> */}
-					</p>
+	return (
+		<div>
+			<div className={styles.main}>
+				<h1 className={styles.title}>You are signed in to a protected page!</h1>
+				<p>
+					{JSON.stringify(session)}
+					You are logged in via Github and your username is{' '}
+					{/* <b>{data.user?.name}</b> */}
+				</p>
 
-					<ButtonOne
-						text="Sign out"
-						onClick={() => {
-							signOut();
-						}}
-						margin="3rem 0 0 0"
-					/>
-				</div>
+				<ButtonOne
+					text="Sign out"
+					onClick={() => {
+						signOut();
+					}}
+					margin="3rem 0 0 0"
+				/>
 			</div>
-		);
+		</div>
+	);
 };
 
 const Protected: NextPage = ({}) => {
