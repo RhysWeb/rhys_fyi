@@ -1,24 +1,27 @@
 import type { NextPage } from 'next';
 import Link from 'next/link';
-import { ContainerHome } from '../../components/ContainerHome/ContainerHome';
 import styles from './homePage.module.css';
 import Head from 'next/head';
 
 const Home: NextPage = () => {
 	return (
-		<ContainerHome>
+		<>
 			<Head>
-				<title>Chem Eng Home</title>
+				<title>rhys.fyi</title>
 			</Head>
 
 			<div className={styles.main}>
-				<h1 className={styles.title}>Chem Eng Tools</h1>
+				<h1 className={styles.title}>Rhys.fyi</h1>
 
 				<div className={styles.linksContainer}>
 					<h2 className={styles.linksTitle}>Links</h2>
 
-					<Link href="/gases">
-						<a className={styles.link}>Gas Conversion</a>
+					<Link href="/chemEngDesignTools">
+						<a className={styles.link}>Chem Eng Design Tools</a>
+					</Link>
+
+					<Link href="/reviews">
+						<a className={styles.link}>Reviews App</a>
 					</Link>
 					<Link href="/comments">
 						<a className={styles.link}>Comments</a>
@@ -28,7 +31,7 @@ const Home: NextPage = () => {
 					</Link>
 				</div>
 			</div>
-		</ContainerHome>
+		</>
 	);
 };
 

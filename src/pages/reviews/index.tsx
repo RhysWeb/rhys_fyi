@@ -1,5 +1,5 @@
 import type { NextPage } from 'next';
-import styles from './protectedPage.module.css';
+import styles from './reviewsPage.module.css';
 import Head from 'next/head';
 import { signIn, signOut, useSession } from 'next-auth/react';
 import ButtonOne from '../../components/ButtonOne/ButtonOne';
@@ -56,7 +56,7 @@ const Contents = () => {
 	);
 };
 
-const Protected: NextPage = ({}) => {
+const Reviews: NextPage = ({}) => {
 	return (
 		<>
 			<Head>
@@ -68,4 +68,4 @@ const Protected: NextPage = ({}) => {
 	);
 };
 
-export default Protected;
+export default Reviews;

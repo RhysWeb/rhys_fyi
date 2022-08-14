@@ -1,5 +1,4 @@
 import { useEffect } from 'react';
-import { ContainerOne } from '../../components/ContainerOne/ContainerOne';
 
 // let SpeechRecognition =
 // 	window.SpeechRecognitionAlternative || window.webkitSpeechRecognition;

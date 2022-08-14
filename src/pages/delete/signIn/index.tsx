@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useRouter } from 'next/router';
-import { ContainerHome } from '../../../components/ContainerHome/ContainerHome';
 import styles from './signIn.module.css';
 import { useSession, signIn, signOut } from 'next-auth/react';
 
@@ -58,7 +57,7 @@ const Signin = () => {
 	};
 
 	return (
-		<ContainerHome>
+		<>
 			<ul>
 				{providers.map(({ name, Icon }) => (
 					<li key={name}>
@@ -69,7 +68,7 @@ const Signin = () => {
 					</li>
 				))}
 			</ul>
-		</ContainerHome>
+		</>
 	);
 };
 

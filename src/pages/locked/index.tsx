@@ -1,5 +1,4 @@
 import type { NextPage } from 'next';
-import { ContainerOne } from '../../components/ContainerOne/ContainerOne';
 import styles from './lockedPage.module.css';
 import Head from 'next/head';
 import { signIn, signOut, useSession } from 'next-auth/react';
@@ -64,13 +63,13 @@ const Contents = () => {
 
 const Locked: NextPage = ({}) => {
 	return (
-		<ContainerOne>
+		<>
 			<Head>
 				<title>Chem Eng Home</title>
 			</Head>
 
 			<Contents />
-		</ContainerOne>
+		</>
 	);
 };
 

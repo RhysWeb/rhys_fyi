@@ -1,14 +1,13 @@
 import { useForm } from 'react-hook-form';
 import styles from './gases.module.css';
-import { FlowOutput } from '../../components/FlowOutput/FlowOutput';
-import { ContainerOne } from '../../components/ContainerOne/ContainerOne';
+import { FlowOutput } from '../../../components/FlowOutput/FlowOutput';
 import Head from 'next/head';
 import {
 	PressureUnitOptions,
 	flowUnitOptions,
 	TemperatureUnitOptions,
 	defaultValues,
-} from '../../utils/pressureAndTempFunctions';
+} from '../../../utils/pressureAndTempFunctions';
 
 type FormValues = {
 	inTemp: number;
@@ -31,7 +30,7 @@ export default function Gases() {
 	});
 
 	return (
-		<ContainerOne>
+		<>
 			<Head>
 				<title>CE - Gas Conversion</title>
 				<meta
@@ -124,6 +123,6 @@ export default function Gases() {
 					{flowUnitOptions}
 				</select>
 			</form>
-		</ContainerOne>
+		</>
 	);
 }

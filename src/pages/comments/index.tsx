@@ -4,7 +4,6 @@ import { Comment } from '../../components/Comment/Comment';
 import { useState } from 'react';
 import { NewCommentForm } from '../../components/NewCommentForm/NewCommentForm';
 import styles from './commentsPage.module.css';
-import { ContainerOne } from '../../components/ContainerOne/ContainerOne';
 import ButtonOne from '../../components/ButtonOne/ButtonOne';
 
 const CommentsPage = () => {
@@ -15,7 +14,7 @@ const CommentsPage = () => {
 		setNewComment(!newComment);
 	}
 	return (
-		<ContainerOne>
+		<>
 			<Head>
 				<title>CE - Comments</title>
 			</Head>
@@ -44,7 +43,7 @@ const CommentsPage = () => {
 					<p>Loading..</p>
 				)}
 			</div>
-		</ContainerOne>
+		</>
 	);
 };
 
