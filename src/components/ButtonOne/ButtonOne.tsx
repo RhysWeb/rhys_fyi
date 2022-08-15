@@ -5,13 +5,20 @@ interface ButtonOneProps {
 	onClick: () => void;
 	text: string;
 	margin?: string;
+	disabled?: boolean;
 }
 
-const ButtonOne: FC<ButtonOneProps> = ({ onClick, text: name, margin }) => (
+const ButtonOne: FC<ButtonOneProps> = ({
+	onClick,
+	text: name,
+	margin,
+	disabled,
+}) => (
 	<button
 		onClick={onClick}
 		className={styles.button}
 		style={{ margin: margin }}
+		disabled={disabled}
 	>
 		{name}
 	</button>
