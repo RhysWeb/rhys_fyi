@@ -7,6 +7,7 @@ import ButtonOne from '../../../components/ButtonOne/ButtonOne';
 import ButtonTwo from '../../../components/ButtonTwo/ButtonTwo';
 import { trpc } from '../../../utils/trpc';
 
+// @ts-ignore
 const Contents = ({ session }) => {
 	const mutation = trpc.useMutation('reviewsUser.createUser');
 	const createAccount = (userName: string, id: string | null | undefined) => {
