@@ -1,16 +1,11 @@
 import Head from 'next/head';
-//import { useRouter } from 'next/router';
+import { useRouter } from 'next/router';
 import { useState, useEffect } from 'react';
 import { useTheme } from 'next-themes';
 // import Link from 'next/link';
 import styles from './Layout.module.css';
 import Image from 'next/image';
 import Link from 'next/link';
-
-interface Props {
-	href: string;
-	text: string;
-}
 
 // export const NavItem: React.FC<Props> = ({ href, text }) => {
 //	router is used to get the url
@@ -33,11 +28,7 @@ interface Props {
 // };
 
 export const Layout: React.FC<any> = (props) => {
-	const [mounted, setMounted] = useState(false);
-	const { resolvedTheme, setTheme } = useTheme();
-
-	// After mounting, we have access to the theme
-	useEffect(() => setMounted(true), []);
+	const router = useRouter();
 
 	const { children, ...customMeta } = props;
 	const meta = {
@@ -48,7 +39,7 @@ export const Layout: React.FC<any> = (props) => {
 	};
 
 	return (
-		<div className={styles.layout}>
+		<>
 			<Head>
 				<meta name="robots" content="follow, index" />
 				<meta content={meta.description} name="description" />
@@ -83,69 +74,54 @@ export const Layout: React.FC<any> = (props) => {
 				<meta name="twitter:description" content={meta.description} />
 				<meta name="twitter:image" content={meta.image} />
 			</Head>
-			<div className={styles.container}>
-				<nav className={styles.nav}>
-					{mounted &&
-						(resolvedTheme === 'dark' ? (
-							<Link href="/">
-								<Image
-									src="/tagsDark1.svg"
-									alt="SRTags Logo"
-									width={30}
-									height={30}
-									className={styles.logo}
-								/>
-							</Link>
-						) : (
-							<Link href="/">
-								<Image
-									src="/tagsLight1.svg"
-									alt="SRTags Logo"
-									width={30}
-									height={30}
-									className={styles.logo}
-								/>
-							</Link>
-						))}
 
-					{/* <NavItem href="/" text="Home" />
-					<NavItem href="/gasconvert" text="GasConv" />
-					<NavItem href="/comments" text="Comments" />
-					<NavItem href="/gases" text="Gases" /> */}
+			<main className={styles.layoutContainer}>
+				<div className={styles.navBar}>
+					<Link href="/">
+						<svg
+							id="eNQkOpUfiPb1"
+							xmlns="http://www.w3.org/2000/svg"
+							xmlnsXlink="http://www.w3.org/1999/xlink"
+							viewBox="0 0 300 300"
+							shapeRendering="geometricPrecision"
+							textRendering="geometricPrecision"
+							width="60"
+							height="60"
+						>
+							<path
+								className={styles.navIcon}
+								d="M90.6348,227.32436v-109.68409h-.00001L150,72.67565l59.36522,44.96462h-.00001v109.68409h-118.73041Z"
+								transform="translate(-.000005-.000005)"
+								strokeWidth="10"
+								strokeLinecap="round"
+								strokeLinejoin="round"
+							/>
+						</svg>
+					</Link>
 
-					<button
-						aria-label="Toggle Dark Mode"
-						type="button"
-						className={styles.button}
-						onClick={() => {
-							setTheme(resolvedTheme === 'dark' ? 'light' : 'dark');
-						}}
+					<svg
+						onClick={() => router.back()}
+						id="esDROrgipPd1"
+						xmlns="http://www.w3.org/2000/svg"
+						xmlnsXlink="http://www.w3.org/1999/xlink"
+						viewBox="0 0 300 300"
+						shapeRendering="geometricPrecision"
+						textRendering="geometricPrecision"
+						width="60"
+						height="60"
 					>
-						{mounted &&
-							(resolvedTheme === 'dark' ? (
-								<svg width="24" height="24" viewBox="0 0 512 512">
-									<path
-										fill="currentColor"
-										d="M256 160c-52.9 0-96 43.1-96 96s43.1 96 96 96 96-43.1 96-96-43.1-96-96-96zm246.4 80.5l-94.7-47.3 33.5-100.4c4.5-13.6-8.4-26.5-21.9-21.9l-100.4 33.5-47.4-94.8c-6.4-12.8-24.6-12.8-31 0l-47.3 94.7L92.7 70.8c-13.6-4.5-26.5 8.4-21.9 21.9l33.5 100.4-94.7 47.4c-12.8 6.4-12.8 24.6 0 31l94.7 47.3-33.5 100.5c-4.5 13.6 8.4 26.5 21.9 21.9l100.4-33.5 47.3 94.7c6.4 12.8 24.6 12.8 31 0l47.3-94.7 100.4 33.5c13.6 4.5 26.5-8.4 21.9-21.9l-33.5-100.4 94.7-47.3c13-6.5 13-24.7.2-31.1zm-155.9 106c-49.9 49.9-131.1 49.9-181 0-49.9-49.9-49.9-131.1 0-181 49.9-49.9 131.1-49.9 181 0 49.9 49.9 49.9 131.1 0 181z"
-									></path>
-								</svg>
-							) : (
-								<svg
-									xmlns="http://www.w3.org/2000/svg"
-									viewBox="0 0 24 24"
-									fill="none"
-									stroke="currentColor"
-								>
-									<path
-										fill="currentColor"
-										d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
-									/>
-								</svg>
-							))}
-					</button>
-				</nav>
-			</div>
-			<main className={styles.mainContent}>{children}</main>
-		</div>
+						<path
+							className={styles.navIcon}
+							d="M228.46787,112.26489v68.18182h-88.55386l.11671,31.77013L25.34925,146.56601L139.54527,80.07436l.11826,32.19054l88.80434-.00001Z"
+							transform="translate(17.633229 3.8544)"
+							strokeWidth="10"
+							strokeLinecap="round"
+							strokeLinejoin="round"
+						/>
+					</svg>
+				</div>
+				{children}
+			</main>
+		</>
 	);
 };

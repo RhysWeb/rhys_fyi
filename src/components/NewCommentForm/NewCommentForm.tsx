@@ -19,7 +19,6 @@ export const NewCommentForm: React.FC<Props> = ({ refetch, setNewComment }) => {
 	const commentMutation = trpc.useMutation(['comment.addComment'], {
 		onSuccess: () => {
 			console.log('success');
-
 			setNewComment(false);
 			refetch();
 		},

@@ -1,36 +1,31 @@
-.title {
-	color: var(--primary-text);
-	margin: 2rem 0;
-	line-height: 1.15;
-	font-size: var(--font-size-fluid-3);
-	text-align: center;
-}
-
 .main {
-	padding: 4rem 0;
-	flex: 1;
+	height: 100vh;
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
+	justify-content: flex-start;
 	align-items: center;
+}
+
+.title {
+	margin-top: var(--size-fluid-3);
+	font-size: var(--font-size-fluid-3);
 }
 
 .linksContainer {
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
+	justify-content: flex-start;
 	align-items: center;
-	margin-block: 1.5rem;
+	margin-top: var(--size-fluid-6);
 }
 
 .linksTitle {
-	color: var(--secondary);
 	font-size: var(--font-size-fluid-2);
-	margin-bottom: 1rem;
+	margin-bottom: var(--size-4);
 }
 
 .link {
-	font-size: 1.5rem;
-	/* margin-block: 0.5rem; */
-	color: var(--primary-text);
+	font-size: var(--font-size-fluid-1);
+	color: var(--link);
+	line-height: clamp(2.5rem, 4vw, 3rem);
 }

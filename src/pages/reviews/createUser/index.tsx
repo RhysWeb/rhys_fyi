@@ -52,7 +52,7 @@ const Contents = ({ session }) => {
 					You are signed in with google. Next, create a username for your
 					reviews and click create reviews account.
 				</p>
-				<p>{JSON.stringify(data)}</p>
+
 				<label>
 					Username:{' '}
 					<input

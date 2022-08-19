@@ -1,10 +1,10 @@
 .card {
-	width: clamp(300px, 75vw, 1000px);
+	width: clamp(200px, 90vw, 900px);
 	margin-block: 0.5rem;
 	padding: 1rem;
-	border-radius: 0.5rem;
+	border-radius: var(--radius-conditional-2);
 	/* border: black 2px solid; */
-	background-color: hsl(35, 98%, 59%);
+	background-color: var(--brand);
 }
 
 .label {
@@ -15,12 +15,20 @@
 .input {
 	resize: none;
 	height: auto;
-	font-family: inherit;
+	font-weight: normal;
+
 	width: 100%;
 	color: black;
 	background-color: antiquewhite;
+	margin-top: 4px;
 }
 
 .gap {
 	height: 1rem;
+}
+
+@media (max-width: 600px) {
+	.card {
+		width: 100vw;
+	}
 }

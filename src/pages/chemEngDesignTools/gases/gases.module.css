@@ -1,7 +1,7 @@
 .form {
 	display: inline-grid;
 	grid-template-columns: auto auto auto;
-	margin-block: 1.5rem;
+	/* margin-block: 3rem; */
 	gap: 5px;
 	--cellHeight: 2rem;
 	--cellWidth: 7rem;
@@ -27,7 +27,7 @@
 	height: var(--cellHeight);
 	width: var(--cellWidth);
 	color: black;
-	background-color: antiquewhite;
+	background-color: var(--brand2);
 }
 .outputStyled {
 	background-color: hsl(60, 93%, 71%);
