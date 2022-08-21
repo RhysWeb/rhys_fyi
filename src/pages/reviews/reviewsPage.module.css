@@ -1,8 +1,13 @@
+.main {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: center;
+}
+
 .title {
-	color: var(--primary-text);
-	margin-block: 2rem 5rem;
-	line-height: 1.15;
-	font-size: 5rem;
+	margin-top: var(--size-fluid-3);
+	font-size: var(--font-size-fluid-3);
 	text-align: center;
 }
 
