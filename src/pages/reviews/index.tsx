@@ -14,13 +14,13 @@ import { reviewsUserRouter } from '../../server/router/reviewsUser';
 // @ts-ignore
 const Contents: React.FC<Props> = ({ session }) => {
 	const router = useRouter();
+
 	const { data, isLoading } = trpc.useQuery([
 		'reviewsUser.getUser',
 		{ userId: session?.user?.id },
 	]);
-
-	if (!session) return <NotSignedIn />;
 	if (isLoading) return <Loading />;
+	// if (!session) return <NotSignedIn />;
 	if (!data) router.push('/reviews/createUser');
 
 	// If we have session and the session userid is in our validated users db then the homepage is shown below
@@ -55,7 +55,13 @@ const ReviewsCreateUserPage: NextPage = ({}) => {
 			<Head>
 				<title>Reviews</title>
 			</Head>
-			{status === 'loading' ? <Loading /> : <Contents session={session} />}
+			{status === 'loading' ? (
+				<Loading />
+			) : session ? (
+				<Contents session={session} />
+			) : (
+				<NotSignedIn />
+			)}
 		</>
 	);
 };
