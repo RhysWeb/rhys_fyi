@@ -57,7 +57,7 @@ export const NotSignedIn: React.FC<Props> = ({}) => {
 			</div>
 			<Image
 				className={styles.image}
-				src="https://res.cloudinary.com/dffmzkbrq/image/upload/v1661094790/friends2_hzhsra.jpg"
+				src="https://res.cloudinary.com/dffmzkbrq/image/upload/v1661123619/friends4_s7qcaz.jpg"
 				alt="A group of young white friends laughing and looking pleased with themselves"
 				layout="fill"
 				objectFit="cover"
@@ -68,7 +68,7 @@ export const NotSignedIn: React.FC<Props> = ({}) => {
 				A site for friends to give and receive film and television
 				recommendations
 			</h2>
-			<p className={styles.note}>...and to rate each other on their choices</p>
+			<p className={styles.note}>...and rate each other on their choices</p>
 
 			<ButtonOne
 				margin="7rem 0 0 0"

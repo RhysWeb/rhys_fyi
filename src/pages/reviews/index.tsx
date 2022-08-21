@@ -20,7 +20,6 @@ const Contents: React.FC<Props> = ({ session }) => {
 		{ userId: session?.user?.id },
 	]);
 	if (isLoading) return <Loading />;
-	// if (!session) return <NotSignedIn />;
 	if (!data) router.push('/reviews/createUser');
 
 	// If we have session and the session userid is in our validated users db then the homepage is shown below

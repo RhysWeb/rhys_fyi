@@ -9,7 +9,6 @@
 
 .title {
 	margin-block: var(--size-fluid-3);
-	padding-top: var(--size-fluid-3);
 	font-size: var(--font-size-fluid-3);
 	text-align: center;
 	color: var(--brand);
@@ -32,6 +31,7 @@
 	border-radius: 10px;
 	padding: 0.1rem 0.7rem;
 	font-weight: var(--font-weight-5);
+	margin-top: 1rem;
 	z-index: 1;
 }
 
