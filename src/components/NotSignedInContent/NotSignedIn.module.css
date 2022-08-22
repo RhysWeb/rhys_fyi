@@ -41,6 +41,7 @@
 	padding: 0.1rem 0.7rem;
 	margin-top: var(--size-fluid-1);
 	z-index: 1;
+	font-weight: var(--font-weight-5);
 }
 
 .image {

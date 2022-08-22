@@ -57,11 +57,13 @@ export const NotSignedIn: React.FC<Props> = ({}) => {
 			</div>
 			<Image
 				className={styles.image}
-				src="https://res.cloudinary.com/dffmzkbrq/image/upload/v1661123619/friends4_s7qcaz.jpg"
+				// src="https://res.cloudinary.com/dffmzkbrq/image/upload/v1661123619/friends4_s7qcaz.jpg"
+				src="/friends4.jpg"
 				alt="A group of young white friends laughing and looking pleased with themselves"
 				layout="fill"
 				objectFit="cover"
 				objectPosition="center"
+				priority
 			/>
 			<h1 className={styles.title}>TV Rex</h1>
 			<h2 className={styles.subHeading}>
