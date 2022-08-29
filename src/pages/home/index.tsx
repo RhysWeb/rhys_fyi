@@ -16,7 +16,7 @@ const Home: NextPage = () => {
 				<div className={styles.linksContainer}>
 					<h2 className={styles.linksTitle}>Links</h2>
 
-					<Link href="/chemEngDesignTools">
+					<Link href="https://chemeng.design">
 						<a className={styles.link}>Chem Eng Design Tools</a>
 					</Link>
 
@@ -24,7 +24,7 @@ const Home: NextPage = () => {
 						<a className={styles.link}>Reviews App</a>
 					</Link>
 					<Link href="/comments">
-						<a className={styles.link}>Comments</a>
+						<a className={styles.link}>Comment</a>
 					</Link>
 					<Link href="/protected">
 						<a className={styles.link}>Protected page</a>

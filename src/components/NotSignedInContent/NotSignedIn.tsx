@@ -64,6 +64,8 @@ export const NotSignedIn: React.FC<Props> = ({}) => {
 				objectFit="cover"
 				objectPosition="center"
 				priority
+				placeholder="blur"
+				blurDataURL="/friends4.jpg"
 			/>
 			<h1 className={styles.title}>TV Rex</h1>
 			<h2 className={styles.subHeading}>
