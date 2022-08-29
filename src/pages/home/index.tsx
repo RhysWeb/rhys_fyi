@@ -20,14 +20,8 @@ const Home: NextPage = () => {
 						<a className={styles.link}>Chem Eng Design Tools</a>
 					</Link>
 
-					<Link href="/reviews">
+					<Link href="https://recs.reviews">
 						<a className={styles.link}>Reviews App</a>
-					</Link>
-					<Link href="/comments">
-						<a className={styles.link}>Comment</a>
-					</Link>
-					<Link href="/protected">
-						<a className={styles.link}>Protected page</a>
 					</Link>
 				</div>
 			</div>
